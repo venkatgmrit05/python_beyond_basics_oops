@@ -1,9 +1,11 @@
-# import abc
+#import abc
+import datetime as dt
 class WriteFile(object):
 
-    # @staticmethod
-    def write(self):
-        return
+    #@staticmethod
+    def write(self,file,data):
+        with open(file,'a') as file_obj:
+            file_obj.write(data)
 
 
 class DelimFile(WriteFile):
@@ -13,12 +15,10 @@ class DelimFile(WriteFile):
 
     def write(self,data):
         string_to_write = f'{self.delimiter}'.join(data) + '\n'
-        with open(self.file,'a') as file:
-            file.write(string_to_write)
+        super(DelimFile, self).write(self.file,string_to_write)
 
 
 class LogFile(WriteFile):
-    import datetime as dt
 
     def __init__(self,file):
         self.file = file
@@ -27,15 +27,14 @@ class LogFile(WriteFile):
         now = dt.datetime.now()
         timestamp = now.strftime("%d-%m-%Y %H:%M")
         string_to_write = '\t'.join([timestamp,msg,'\n'])
-        with open(self.file,'a') as file:
-            file.write(string_to_write)
+        super(LogFile,self).write(self.file,string_to_write)
 
 
-# test code
+#test code
+
 
 
 mydelim = DelimFile('data.csv',',')
-
 mydelim.write(['a','b','c','d',])
 
 log = LogFile('log.txt')

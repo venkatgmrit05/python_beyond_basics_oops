@@ -1,18 +1,2 @@
-16 11 2021 23:54:48	this is a log16 11 2021 23:54:48	this is another  log16 11 2021 23:55:05	this is a log16 11 2021 23:55:05	this is another  log16 11 2021 23:56:49	this is a log	
-16 11 2021 23:56:49	this is another  log	
-16 11 2021 23:57:45	this is a log	
-16 11 2021 23:57:45	this is another  log	
-16 11 2021 23:58:41	this is a log	
-16 11 2021 23:58:41	this is another  log	
-16 11 2021 23:58:53	this is a log	
-16 11 2021 23:58:53	this is another  log	
-16 11 2021 23:59:27	this is a log	
-16 11 2021 23:59:27	this is another  log	
-17 11 2021 00:00:47	this is a log	
-17 11 2021 00:00:47	this is another  log	
-17 11 2021 00:01:23	this is a log	
-17 11 2021 00:01:23	this is another  log	
-17-11-2021 00:02	this is a log	
-17-11-2021 00:02	this is another  log	
-17-11-2021 00:03	this is a log	
-17-11-2021 00:03	this is another  log	
+17-11-2021 09:36	this is a log	
+17-11-2021 09:36	this is another  log	
