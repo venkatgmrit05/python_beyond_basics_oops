@@ -4,7 +4,12 @@ import datetime as dt
 
 class WriteFile(object):
 
-    # @staticmethod
+    def __init__(self,
+                 file,
+                 writer_class):
+        self.file = file
+        self.writer_class = writer_class
+
     def write(self,file,data):
         with open(file,'a') as file_obj:
             file_obj.write(data)
