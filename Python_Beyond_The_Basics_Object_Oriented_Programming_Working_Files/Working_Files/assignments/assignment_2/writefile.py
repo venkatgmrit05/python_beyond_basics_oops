@@ -1,4 +1,6 @@
 # import abc
+#inheritance example
+import datetime as dt
 class WriteFile(object):
 
     # @staticmethod
@@ -18,7 +20,7 @@ class DelimFile(WriteFile):
 
 
 class LogFile(WriteFile):
-    import datetime as dt
+
 
     def __init__(self,file):
         self.file = file
