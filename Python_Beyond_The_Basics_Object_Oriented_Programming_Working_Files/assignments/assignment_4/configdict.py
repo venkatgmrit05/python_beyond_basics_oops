@@ -1,22 +1,17 @@
 import os
+import pysnooper
+
+
 
 
 class ConfigKeyError(Exception):
-    def __init__(self,
-                 *args):
-        print('calling my err')
-        if args:
-            self.message = args[0]
-        else:
-            self.message = ''
+    def __init__(self,this,key):
+        print('initializing  CKE')
+        self.key = key
+        self.keys = this.keys()
 
     def __str__(self):
-        print('the raised expetion is my error class')
-        if self.message:
-            print('error message is {}'.format(self.message))
-            return self.message
-        else:
-            print('no message')
+        return 'key {} not found. The available keys are  {}'.format(self.key,".".join(self.keys))
 
 
 class ConfigDict(dict):
@@ -26,27 +21,31 @@ class ConfigDict(dict):
         try:
             print(os.path.isfile(file))
             self.file = file
-            self.read_config_file()
         except Exception as e:
             print(e)
+        self.read_config_file()
 
     def __setitem__(self,key,value):
         dict.__setitem__(self,key,value)
         self.write_to_config_file(key,value)
 
     def __getitem__(self,key):
-        try:
+        if not key in self:
+            raise ConfigKeyError(self,key)
+        else:
             return dict.__getitem__(self,key)
-        except ConfigKeyError as e:
-            print(e)
 
+    #@pysnooper.snoop()
     def read_config_file(self):
-        with open(self.file,'r') as fh:
-            data = fh.readlines()
-        for line in data:
-            key,val = line.split('=')
-            val = val.strip()
-            self[key] = val
+        try:
+            with open(self.file,'r') as fh:
+                data = fh.readlines()
+            for line in data:
+                key,val = line.split('=')
+                val = val.strip()
+                self[key] = val
+        except Exception as e:
+            print(e)
 
     def write_to_config_file(self,k,v):
         _data = []
@@ -59,3 +58,4 @@ class ConfigDict(dict):
             _data.append(_text)
         with open(self.file,'w') as fh:
             fh.writelines(_data)
+

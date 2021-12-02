@@ -154,3 +154,7 @@ d3plot
 *.key
 Testing/
 log/
+pytests/
+safran/
+.pdf
+.pptx
